@@ -22,7 +22,7 @@ pipeline {
         sh 'git config user.name  "${GITHUB_USERNAME}"'
         sh "cat manifest.yaml"
         echo "${DOCKERTAG}"
-        sh "sed -i 's+image-registry.openshift-image-registry.svc:5000/amisha-jenkins/expense-tracker-frontend:.*+image-registry.openshift-image-registry.svc:5000/amisha-jenkins/expense-tracker-frontend:${DOCKERTAG}+g' ./my-folder/manifest.yaml"
+        sh "sed -i 's+image-registry.openshift-image-registry.svc:5000/amisha-jenkins/expense-tracker-frontend:.*+image-registry.openshift-image-registry.svc:5000/amisha-jenkins/expense-tracker-frontend:${DOCKERTAG}+g' manifest.yaml"
         sh "cat manifest.yaml"
         sh "git add ."
         sh "git commit -m 'done by jenkins frontend-deployment-pipeline' "
