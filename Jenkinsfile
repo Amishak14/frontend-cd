@@ -20,14 +20,14 @@ pipeline {
 
         sh 'git config user.email "${GITHUB_EMAIL}"'
         sh 'git config user.name  "${GITHUB_USERNAME}"'
-        sh "cat ./my-folder/manifest.yaml"
+        sh "cat manifest.yaml"
         echo "${DOCKERTAG}"
         sh "sed -i 's+image-registry.openshift-image-registry.svc:5000/amisha-jenkins/expense-tracker-frontend:.*+image-registry.openshift-image-registry.svc:5000/amisha-jenkins/expense-tracker-frontend:${DOCKERTAG}+g' ./my-folder/manifest.yaml"
         sh "cat manifest.yaml"
         sh "git add ."
         sh "git commit -m 'done by jenkins frontend-deployment-pipeline' "
        // sh "git pull"
-        sh 'git push https://$user:$encodedPass@github.com/$user/tag-image.git HEAD:branch'
+        sh 'git push https://$user:$encodedPass@github.com/$user/frontend-cd.git HEAD:branch'
             }
         }
         }
